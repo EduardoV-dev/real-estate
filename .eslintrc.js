@@ -17,6 +17,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
+    'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -30,6 +31,7 @@ module.exports = {
   rules: {
     'no-unused-vars': RULES.WARN,
     'react/prop-types': RULES.OFF,
+    'react/jsx-filename-extension': RULES.OFF,
     'react/function-component-definition': [
       2,
       {

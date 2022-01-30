@@ -1,3 +1,13 @@
+const path = require('path');
+const gatsbyRequiredRules = path.join(
+  process.cwd(),
+  'node_modules',
+  'gatsby',
+  'dist',
+  'utils',
+  'eslint-rules',
+);
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -24,15 +34,25 @@ module.exports = {
         short_name: `starter`,
         start_url: `/`,
         background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        rulePaths: [gatsbyRequiredRules],
+      },
+    },
+    `gatsby-plugin-material-ui`,
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        resolveModules: [path.join(__dirname, 'src')],
+        '@components': path.join(__dirname, 'src', 'components'),
+        '@templates': path.join(__dirname, 'src', 'templates'),
+        '@images': path.join(__dirname, 'src', 'images'),
+      },
+    },
   ],
-}
+};
