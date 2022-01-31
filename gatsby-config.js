@@ -1,4 +1,5 @@
 const path = require('path');
+
 const gatsbyRequiredRules = path.join(
   process.cwd(),
   'node_modules',
@@ -18,6 +19,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -25,8 +29,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -39,19 +41,9 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-eslint',
+      resolve: `gatsby-plugin-eslint`,
       options: {
         rulePaths: [gatsbyRequiredRules],
-      },
-    },
-    `gatsby-plugin-material-ui`,
-    {
-      resolve: `gatsby-plugin-root-import`,
-      options: {
-        resolveModules: [path.join(__dirname, 'src')],
-        '@components': path.join(__dirname, 'src', 'components'),
-        '@templates': path.join(__dirname, 'src', 'templates'),
-        '@images': path.join(__dirname, 'src', 'images'),
       },
     },
   ],

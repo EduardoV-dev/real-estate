@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 
-const IndexPage = () => (
+const IndexPage: React.FC<PageProps<Record<string, unknown>>> = () => (
   <>
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
@@ -15,9 +15,6 @@ const IndexPage = () => (
       alt="A Gatsby astronaut"
       style={{ marginBottom: `1.45rem` }}
     />
-    <p>
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-    </p>
   </>
 );
 

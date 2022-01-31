@@ -1,5 +1,4 @@
 const RULES = {
-  ON: 'on',
   OFF: 'off',
   WARN: 'warn',
   ERR: 'error',
@@ -39,5 +38,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'import/extensions': RULES.OFF,
+    '@typescript-eslint/no-var-requires': RULES.OFF,
   },
 };
