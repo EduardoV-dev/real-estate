@@ -31,6 +31,7 @@ module.exports = {
     'no-unused-vars': RULES.WARN,
     'react/prop-types': RULES.OFF,
     'react/jsx-filename-extension': RULES.OFF,
+    'react/jsx-props-no-spreading': RULES.OFF,
     'react/function-component-definition': [
       2,
       {
