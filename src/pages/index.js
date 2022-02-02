@@ -4,10 +4,28 @@ import { Hero, InfoSection } from '../components';
 
 const query = graphql`
   query {
-    image: file(relativePath: { eq: "hl1.jpg" }) {
-      sharp: childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_withWebp
+    landingHero: allContentfulHeroData(filter: { slug: { eq: "landing" } }) {
+      nodes {
+        title
+        image {
+          gatsbyImageData
+        }
+      }
+    }
+    findHero: allContentfulHeroData(filter: { slug: { eq: "find" } }) {
+      nodes {
+        title
+        subtitle
+        image {
+          gatsbyImageData
+        }
+      }
+    }
+    info: allContentfulPageData(filter: { title: { eq: "Home" } }) {
+      nodes {
+        title
+        content {
+          raw
         }
       }
     }
@@ -15,23 +33,15 @@ const query = graphql`
 `;
 
 const IndexPage = () => {
-  const { image } = useStaticQuery(query);
-  const data = {
-    title: 'Home',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, odio nesciunt maxime rem ad iste exercitationem vitae sapiente architecto sed. Atque veniam libero excepturi accusantium eveniet deleniti animi minima explicabo. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates facilis quod atque doloremque ullam ut aperiam voluptatibus architecto repudiandae expedita placeat in, necessitatibus fuga ipsum consequuntur odio deleniti? Impedit, vitae!',
-  };
+  const { landingHero, findHero, info } = useStaticQuery(query);
 
   return (
     <>
-      <Hero
-        title="Exclusive houses and departments on sale"
-        fluid={image.sharp.fluid}
-      />
+      <Hero data={landingHero.nodes[0]} />
       <div className="wrapper">
-        <InfoSection data={data} />
+        <InfoSection data={info.nodes[0]} />
       </div>
-      <Hero title="" />
+      <Hero data={findHero.nodes[0]} minHeight="250px" />
     </>
   );
 };

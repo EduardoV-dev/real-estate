@@ -1,9 +1,17 @@
 import React from 'react';
 import { getImage } from 'gatsby-plugin-image';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { Container, Image, Paragraph, Section, Title } from './styled';
 
+const RENDER_OPTIONS = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
+  },
+};
+
 const InfoSection = ({ data }) => {
-  const { title, description, img } = data;
+  const { title, content, img } = data;
   const imgExists = img !== undefined;
 
   return (
@@ -11,7 +19,7 @@ const InfoSection = ({ data }) => {
       <Title>{title}</Title>
       <Container imgExists={imgExists}>
         {img && <Image image={getImage(img)} alt={title} />}
-        <Paragraph>{description}</Paragraph>
+        {renderRichText(content, RENDER_OPTIONS)}
       </Container>
     </Section>
   );

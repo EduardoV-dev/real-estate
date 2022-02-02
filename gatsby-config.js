@@ -1,4 +1,9 @@
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: path.join(__dirname, '.env'),
+});
 
 const gatsbyRequiredRules = path.join(
   process.cwd(),
@@ -52,6 +57,13 @@ module.exports = {
       resolve: `gatsby-plugin-eslint`,
       options: {
         rulePaths: [gatsbyRequiredRules],
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
       },
     },
   ],

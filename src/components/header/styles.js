@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 
-/* Styled components */
-
 export const Header = styled.header`
+  position: sticky;
+  z-index: 10;
+  top: 0;
   background-color: ${props => props.theme.colors.secondary};
 `;
 

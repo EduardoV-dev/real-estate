@@ -1,13 +1,19 @@
 import React from 'react';
-import { BgImage, Container, Headline } from './styled';
+import { getImage } from 'gatsby-plugin-image';
+import { BgImage, Container, Content, Headline, Paragraph } from './styled';
 
-const Hero = ({ title, subtitle, fluid }) => (
-  <BgImage tag="section" fluid={fluid} fadeIn="soft">
-    <Container>
-      <Headline>{title}</Headline>
-      {subtitle && <p>{subtitle}</p>}
+const Hero = ({ data, minHeight }) => {
+  const { title, subtitle, image } = data;
+
+  return (
+    <Container minHeight={minHeight}>
+      <BgImage image={getImage(image)} alt={title} />
+      <Content>
+        <Headline>{title}</Headline>
+        {subtitle && <Paragraph>{subtitle}</Paragraph>}
+      </Content>
     </Container>
-  </BgImage>
-);
+  );
+};
 
 export default Hero;

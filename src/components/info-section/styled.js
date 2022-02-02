@@ -28,6 +28,7 @@ export const Image = styled(GatsbyImage)`
 `;
 
 export const Paragraph = styled.p`
+  width: 100%;
   max-width: 40rem;
   margin: 0 auto;
 `;

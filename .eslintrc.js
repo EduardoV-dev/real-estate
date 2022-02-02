@@ -16,9 +16,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
-    'plugin:@typescript-eslint/recommended',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -26,7 +24,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks'],
   rules: {
     'no-unused-vars': RULES.WARN,
     'react/prop-types': RULES.OFF,
@@ -40,6 +38,5 @@ module.exports = {
       },
     ],
     'import/extensions': RULES.OFF,
-    '@typescript-eslint/no-var-requires': RULES.OFF,
   },
 };
