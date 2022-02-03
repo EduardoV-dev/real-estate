@@ -1,3 +1,4 @@
 export { default as Layout } from './layout';
 export { default as Hero } from './hero';
-export { default as InfoSection } from './info-section';
+export { default as PageInfo } from './page-info';
+export { default as Estates } from './estates';

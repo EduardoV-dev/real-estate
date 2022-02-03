@@ -9,6 +9,7 @@ export const Title = styled.h3`
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: ${({ theme }) => theme.colors.dark};
 `;
 
 export const Container = styled.div`
@@ -31,4 +32,5 @@ export const Paragraph = styled.p`
   width: 100%;
   max-width: 40rem;
   margin: 0 auto;
+  color: ${({ theme }) => theme.colors.dark};
 `;

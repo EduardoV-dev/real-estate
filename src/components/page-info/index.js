@@ -10,7 +10,7 @@ const RENDER_OPTIONS = {
   },
 };
 
-const InfoSection = ({ data }) => {
+const PageInfo = ({ data }) => {
   const { title, content, img } = data;
   const imgExists = img !== undefined;
 
@@ -24,4 +24,4 @@ const InfoSection = ({ data }) => {
     </Section>
   );
 };
-export default InfoSection;
+export default PageInfo;

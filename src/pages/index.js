@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Hero, InfoSection } from '../components';
+import { Estates, Hero, PageInfo } from '../components';
 
 const query = graphql`
   query {
@@ -39,9 +39,12 @@ const IndexPage = () => {
     <>
       <Hero data={landingHero.nodes[0]} />
       <div className="wrapper">
-        <InfoSection data={info.nodes[0]} />
+        <PageInfo data={info.nodes[0]} />
       </div>
       <Hero data={findHero.nodes[0]} minHeight="250px" />
+      <div className="wrapper">
+        <Estates />
+      </div>
     </>
   );
 };
