@@ -11,14 +11,14 @@ const RENDER_OPTIONS = {
 };
 
 const PageInfo = ({ data }) => {
-  const { title, content, img } = data;
-  const imgExists = img !== undefined;
+  const { title, content, image } = data;
+  const imgExists = image !== undefined;
 
   return (
     <Section>
       <Title>{title}</Title>
       <Container imgExists={imgExists}>
-        {img && <Image image={getImage(img)} alt={title} />}
+        {image && <Image image={getImage(image)} alt={title} />}
         {renderRichText(content, RENDER_OPTIONS)}
       </Container>
     </Section>

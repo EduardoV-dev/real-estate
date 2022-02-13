@@ -45,7 +45,7 @@ export const Content = styled.div`
 export const Headline = styled.h2`
   font-size: 2.5rem;
   text-align: center;
-  color: ${props => props.theme.colors.light};
+  color: ${({ theme }) => theme.colors.light};
   font-weight: normal;
 `;
 

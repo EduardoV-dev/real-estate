@@ -8,7 +8,7 @@ export const wrapRootElement = ({ element }) => (
 );
 
 export const wrapPageElement = ({ element }) => (
-  <>
+  <ThemeProvider theme={theme}>
     <Layout>{element}</Layout>;
     <Global
       styles={css`
@@ -31,7 +31,7 @@ export const wrapPageElement = ({ element }) => (
         p {
           line-height: 1.5;
           font-size: 1rem;
-          color: ${props => props.theme.colors.light};
+          color: #f2f2f2;
         }
 
         .link-active {
@@ -53,6 +53,7 @@ export const wrapPageElement = ({ element }) => (
           width: 95%;
           max-width: 75rem;
           margin: 0 auto;
+          overflow-x: hidden;
 
           @media screen and (min-width: 1200px) {
             width: 100%;
@@ -61,5 +62,5 @@ export const wrapPageElement = ({ element }) => (
         }
       `}
     />
-  </>
+  </ThemeProvider>
 );
