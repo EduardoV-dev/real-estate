@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
+import React from 'react';
+import { Waypoint } from 'react-waypoint';
+import { formatCurrency } from '../../utils';
+import EstateInfo from '../estate-info';
 import {
   Amount,
   Category,
@@ -14,14 +16,13 @@ import {
   Title,
   Wrapper,
 } from './styled';
-import EstateInfo from '../estate-info';
-import formatCurrency from '../../utils';
+import useEstates from './useEstates';
 
-const EstateItem = ({ estate }) => {
+const EstateItem = ({ style, estate }) => {
   const { name, price, category, image, items, slug } = estate;
 
   return (
-    <Item id="element">
+    <Item style={style}>
       <Image image={getImage(image)} alt="" />
       <Wrapper>
         <Title>{name}</Title>
@@ -37,55 +38,41 @@ const EstateItem = ({ estate }) => {
 const SELECT_OPTIONS = ['All', 'By the lake', 'Department', 'Deluxe'];
 
 const Estates = () => {
-  const { info } = useStaticQuery(graphql`
-    query {
-      info: allContentfulEstate {
-        nodes {
-          name
-          price
-          category
-          slug
-          image {
-            gatsbyImageData
-          }
-          items {
-            wc
-            rooms
-            parking
-          }
-        }
-      }
-    }
-  `);
-  const [filterBy, setFilterBy] = useState('All');
-  const [filteredData, setFilteredData] = useState(info.nodes);
-  const handleOnChange = ({ target: { value } }) => setFilterBy(value);
-
-  useEffect(() => {
-    if (filterBy === 'All') return setFilteredData(info.nodes);
-    const newFilteredData = info.nodes.filter(
-      data => data.category === filterBy,
-    );
-    return setFilteredData(newFilteredData);
-  }, [filterBy, info.nodes, setFilteredData]);
+  const { filteredData, trail, animate, handleOnChange, setAnimate } =
+    useEstates();
 
   return (
-    <Section>
-      <Headline>Our Estates</Headline>
-      <SelComp onChange={handleOnChange}>
-        <option hidden>Filter by</option>
-        {SELECT_OPTIONS.map(value => (
-          <option key={value} value={value}>
-            {value}
-          </option>
-        ))}
-      </SelComp>
-      <List>
-        {filteredData.map(estate => (
-          <EstateItem key={estate.slug} estate={estate} />
-        ))}
-      </List>
-    </Section>
+    <Waypoint
+      onEnter={() => setAnimate(true)}
+      onLeave={() => setAnimate(false)}
+    >
+      <Section>
+        <Headline className="animate__animated animate__fadeInDown">
+          Our Estates
+        </Headline>
+        <SelComp
+          className="animate__animated animate__fadeInDown animate__delay-1s"
+          onChange={handleOnChange}
+        >
+          <option hidden>Filter by</option>
+          {SELECT_OPTIONS.map(value => (
+            <option key={value} value={value}>
+              {value}
+            </option>
+          ))}
+        </SelComp>
+        <List>
+          {animate &&
+            trail.map((styles, idx) => (
+              <EstateItem
+                style={styles}
+                key={filteredData[idx].slug}
+                estate={filteredData[idx]}
+              />
+            ))}
+        </List>
+      </Section>
+    </Waypoint>
   );
 };
 

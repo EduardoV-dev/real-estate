@@ -27,19 +27,6 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   user-select: none;
-
-  &:hover {
-    h2 {
-      transform: scale(1);
-      animation: scaling 1s ease infinite alternate;
-
-      @keyframes scaling {
-        100% {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
 `;
 
 export const Headline = styled.h2`

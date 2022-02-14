@@ -38,9 +38,29 @@ export const Headline = styled.h1`
 `;
 
 export const Link = styled(GatsbyLink)`
+  position: relative;
   text-decoration: none;
-  color: ${props => props.theme.colors.light};
+  color: ${props => props.theme.colors.white};
   font-weight: bold;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    border-radius: 10px;
+    background-color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      width: 100%;
+    }
+  }
 `;
 
 export const Nav = styled.nav`

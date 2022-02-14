@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Icon, InfoItem, Quantity } from './styled';
-import WCIcon from '../../svg/icono_wc.svg';
-import ParkingIcon from '../../svg/icono_estacionamiento.svg';
-import RoomsIcon from '../../svg/icono_dormitorio.svg';
+import WCIcon from '../../svg/wc.svg';
+import ParkingIcon from '../../svg/parking.svg';
+import RoomsIcon from '../../svg/rooms.svg';
 
 const EstateInfoItem = ({ src, value }) => (
   <InfoItem>

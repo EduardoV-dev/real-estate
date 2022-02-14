@@ -6,7 +6,11 @@ import { Container, Image, Paragraph, Section, Title } from './styled';
 
 const RENDER_OPTIONS = {
   renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, children) => <Paragraph>{children}</Paragraph>,
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <Paragraph className="animate__animated animate__fadeInRight">
+        {children}
+      </Paragraph>
+    ),
   },
 };
 
@@ -16,9 +20,15 @@ const PageInfo = ({ data }) => {
 
   return (
     <Section>
-      <Title>{title}</Title>
+      <Title className="animate__animated animate__fadeInDown">{title}</Title>
       <Container imgExists={imgExists}>
-        {image && <Image image={getImage(image)} alt={title} />}
+        {image && (
+          <Image
+            className="animate__animated animate__fadeInLeft"
+            image={getImage(image)}
+            alt={title}
+          />
+        )}
         {renderRichText(content, RENDER_OPTIONS)}
       </Container>
     </Section>

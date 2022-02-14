@@ -1,9 +1,9 @@
 import React from 'react';
-import { Header as Container, Headline, Wrapper, Link, Nav } from './styles';
+import { Header as Container, Headline, Wrapper, Link, Nav } from './styled';
 
 const Header = () => (
   <Container>
-    <Wrapper>
+    <Wrapper className="animate__animated animate__fadeInDown">
       <Link to="/">
         <Headline>
           REAL<span>ESTATE</span>

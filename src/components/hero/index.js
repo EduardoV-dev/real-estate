@@ -9,8 +9,14 @@ const Hero = ({ data, minHeight }) => {
     <Container minHeight={minHeight}>
       <BgImage image={getImage(image)} alt={title} />
       <Content>
-        <Headline>{title}</Headline>
-        {subtitle && <Paragraph>{subtitle}</Paragraph>}
+        <Headline className="animate__animated animate__fadeInUp">
+          {title}
+        </Headline>
+        {subtitle && (
+          <Paragraph className="animate__animated animate__fadeInUp">
+            {subtitle}
+          </Paragraph>
+        )}
       </Content>
     </Container>
   );

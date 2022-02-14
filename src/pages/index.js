@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Estates, Hero, PageInfo } from '../components';
+import { Estates, Hero, PageInfo, SEO } from '../components';
+import { formatSEO } from '../utils';
 
 const query = graphql`
   query {
@@ -34,6 +35,11 @@ const query = graphql`
 
 const IndexPage = () => {
   const { landingHero, findHero, info } = useStaticQuery(query);
+  const seo = {
+    title: findHero.nodes[0].title,
+    description: findHero.nodes[0].subtitle,
+    banner: '',
+  };
 
   return (
     <>
@@ -45,6 +51,7 @@ const IndexPage = () => {
       <div className="wrapper">
         <Estates />
       </div>
+      <SEO seo={formatSEO(seo)} />
     </>
   );
 };

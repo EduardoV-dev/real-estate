@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeProvider, Global, css } from '@emotion/react';
-import 'animate.css';
 import { Layout } from './src/components';
 import theme from './src/theme';
 

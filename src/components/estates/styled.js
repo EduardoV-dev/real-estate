@@ -1,13 +1,20 @@
 import styled from '@emotion/styled';
+import { animated } from 'react-spring';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link as GatsbyLink } from 'gatsby';
 
 /* ESTATEITEM */
 
-export const Item = styled.div`
+export const Item = styled(animated.div)`
   width: 100%;
   border: ${({ theme }) => `1px solid ${theme.colors.gray}`};
   box-shadow: ${({ theme }) => `1px 1px 2px 0px ${theme.colors.gray}`};
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-2%);
+  }
 `;
 
 export const Image = styled(GatsbyImage)`
@@ -53,7 +60,8 @@ export const Link = styled(GatsbyLink)`
   color: ${({ theme }) => theme.colors.light};
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.primary};
     font-weight: bold;
@@ -68,6 +76,7 @@ export const Section = styled.section`
   width: 100%;
   max-width: 850px;
   margin: 2rem auto;
+  overflow: hidden;
 `;
 
 export const Headline = styled.h3`
@@ -84,6 +93,12 @@ export const Select = styled.select`
   margin-bottom: 2rem;
   background-color: ${({ theme }) => theme.colors.white};
   border: ${({ theme }) => `1px solid ${theme.colors.secondary}`};
+
+  &:hover,
+  &:focus {
+    border: ${({ theme }) => `1px solid ${theme.colors.primary}`};
+    box-shadow: ${({ theme }) => `0 0 2px 2px ${theme.colors.primary}`};
+  }
 `;
 
 export const List = styled.div`

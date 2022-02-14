@@ -3,6 +3,9 @@ const formatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 });
 
-const formatCurrency = value => formatter.format(value);
+export const formatCurrency = value => formatter.format(value);
 
-export default formatCurrency;
+export const formatSEO = seo => ({
+  ...seo,
+  title: `Real Estate | ${seo.title}`,
+});
